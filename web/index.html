@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lexical Explorer</title>
+  <link rel="manifest" href="manifest.json">
+  <link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+  <div id="app">
+    <header class="app-header">
+      <div class="logo">Lexical Explorer <span class="version">v1.0.0 (Local Engine)</span></div>
+      <div class="search-box">
+        <input type="text" id="lexical-search" placeholder="Search lemma or inflected surface (e.g. 'went', 'runner')..." autocomplete="off" />
+      </div>
+    </header>
+
+    <main class="app-main">
+      <aside class="sidebar-panel">
+        <section class="panel-section">
+          <h3>Paradigm Inspector</h3>
+          <div id="paradigm-content" class="content-block">Select a lexeme to inspect forms.</div>
+        </section>
+        <section class="panel-section">
+          <h3>Epistemic Provenance</h3>
+          <div id="provenance-content" class="content-block">Why Connected? / Claim ledger.</div>
+        </section>
+      </aside>
+
+      <section class="visualization-panel">
+        <div id="graph-viewport"></div>
+      </section>
+    </main>
+  </div>
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>English Lexical & Morphological Explorer</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="app-header">
+    <div class="header-container">
+      <h1 class="logo">Lexical Explorer</h1>
+      <div class="search-bar-container">
+        <input type="text" id="search-input" placeholder="Search lemma, form, or gloss (e.g. run, faster)..." autocomplete="off" />
+        <ul id="autocomplete-results" class="autocomplete-dropdown hidden"></ul>
+      </div>
+    </div>
+  </header>
+
+  <main class="app-main">
+    <div class="layout-grid">
+      <!-- Left Column: Word Page Aggregator -->
+      <section class="word-page-container">
+        <div id="word-header" class="card hidden">
+          <div class="lemma-row">
+            <h2 id="word-lemma">-</h2>
+            <span id="word-pos" class="badge pos-badge">-</span>
+            <span id="word-tier" class="badge tier-badge">-</span>
+            <button id="btn-favorite" class="btn-favorite" title="Save to workspace">★ Favorite</button>
+          </div>
+          <div id="word-base-form" class="subtext"></div>
+        </div>
+
+        <div id="senses-section" class="card hidden">
+          <h3>Definitions & Senses</h3>
+          <ul id="senses-list" class="senses-list"></ul>
+        </div>
+
+        <div id="inflections-section" class="card hidden">
+          <h3>Inflected Forms (HAS_FORM)</h3>
+          <div id="inflections-chips" class="chips-grid"></div>
+        </div>
+
+        <div id="derivations-section" class="card hidden">
+          <h3>Derivational Neighborhood (DERIVED_FROM)</h3>
+          <div id="derivations-grid" class="links-grid"></div>
+        </div>
+
+        <div id="traversal-section" class="card hidden">
+          <h3>Graph Expansion (Bounded Depth D ≤ 3)</h3>
+          <div id="traversal-results" class="traversal-list"></div>
+        </div>
+      </section>
+
+      <!-- Right Column: User Workspace Isolation View -->
+      <aside class="workspace-sidebar card">
+        <h3>User Workspace (user_workspace.db)</h3>
+        <p class="caption">Partition-isolated persistent storage (zero cross-database foreign keys).</p>
+        <div class="favorites-pane">
+          <h4>Saved Lexemes</h4>
+          <ul id="favorites-list" class="favorites-list"></ul>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <!-- Epistemic Provenance Explanation Modal (PRD §57 Gate 14) -->
+  <div id="provenance-modal" class="modal-overlay hidden">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>Connection Provenance & Epistemic Ledger</h3>
+        <button id="modal-close" class="btn-close">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div id="modal-status-badge" class="badge"></div>
+        <div class="modal-prop-group">
+          <strong>Relation ID:</strong> <span id="modal-relation-id">-</span>
+        </div>
+        <div class="modal-prop-group">
+          <strong>Evidence Type:</strong> <span id="modal-evidence-type">-</span>
+        </div>
+        <div class="modal-prop-group">
+          <strong>Resolution Status:</strong> <span id="modal-resolution-status">-</span>
+        </div>
+        <h4>Supporting Claims</h4>
+        <div id="modal-claims-list" class="claims-list"></div>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

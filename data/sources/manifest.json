@@ -1,0 +1,29 @@
+{
+  "version": "1.0.0",
+  "sources": {
+    "OEWN_2025": {
+      "path": "data/sources/oewn_2025.json",
+      "sha256": "6cb6d00de1b72b2ab20dd537795b78935f91bfdb70beea5a65fd7020f4c722b4",
+      "format": "JSON_WN_LMF",
+      "license": "CC BY 4.0"
+    },
+    "WIKTIONARY_KAIKKI_20260805": {
+      "path": "data/sources/kaikki_english_20260805.jsonl",
+      "sha256": "236f7ec006e3fe8ba5110de8b01ec22ea13899f23ef77ab474e98d9a9655c951",
+      "format": "STREAMING_JSONL",
+      "license": "CC BY-SA 4.0"
+    },
+    "UNIMORPH_ENG": {
+      "path": "data/sources/unimorph_eng.tsv",
+      "sha256": "3eea9742cfd80f53f0914edb4a6092545d43e0e061fde8b90a26e4d3b4837971",
+      "format": "TSV",
+      "license": "CC BY-SA 4.0"
+    },
+    "SUBTLEX_US_R1": {
+      "path": "data/sources/subtlex_us_r1.tsv",
+      "sha256": "683efec033c09d56ae56bd64370104dc10218df4bfded982fe377e6a8578ae78",
+      "format": "TSV",
+      "license": "RESEARCH_EDUCATIONAL_FREE"
+    }
+  }
+}

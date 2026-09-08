@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#0b132b">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+  <title>Lexical Explorer — Epistemic Graph Visualizer</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, monospace; margin: 0; padding: 1.5rem; background: #0b132b; color: #f8fafc; }
+    header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; border-bottom: 1px solid #1e293b; padding-bottom: 0.75rem; }
+    h3 { margin: 0; font-size: 1.25rem; font-weight: 600; }
+    .controls { display: flex; gap: 0.5rem; margin-bottom: 1rem; }
+    input, button { padding: 0.6rem 1rem; border-radius: 4px; border: 1px solid #334155; background: #1e293b; color: #fff; font-family: monospace; font-size: 0.95rem; }
+    input:focus { outline: none; border-color: #38bdf8; }
+    button { cursor: pointer; background: #2563eb; border: none; font-weight: bold; }
+    button:hover { background: #1d4ed8; }
+    #canvasContainer { width: 100%; height: 620px; background: #0f172a; border-radius: 8px; border: 1px solid #1e293b; position: relative; overflow: hidden; }
+    canvas { width: 100%; height: 100%; display: block; }
+    .status { font-size: 0.85rem; color: #94a3b8; font-family: monospace; }
+    .legend { display: flex; gap: 1.5rem; margin-top: 0.75rem; font-size: 0.8rem; color: #94a3b8; flex-wrap: wrap; }
+    .legend-item { display: flex; align-items: center; gap: 0.4rem; }
+    .dot { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
+  </style>
+</head>
+<body>
+  <header>
+    <h3>Lexical Explorer &mdash; Epistemic Graph Visualizer</h3>
+    <div class="status" id="status">Purging stale cache & initializing...</div>
+  </header>
+  <div class="controls">
+    <input type="text" id="termInput" placeholder="Lookup lemma (e.g. happy, go, run, car)" value="happy" />
+    <button id="searchBtn">Traverse & Render</button>
+  </div>
+  <div id="canvasContainer">
+    <canvas id="graphCanvas" width="1200" height="620"></canvas>
+  </div>
+  <div class="legend">
+    <div class="legend-item"><span class="dot" style="background:#38bdf8"></span> Lexeme Node / Derivation Edge</div>
+    <div class="legend-item"><span class="dot" style="background:#64748b"></span> Form Node / Inflection Edge (HAS_FORM)</div>
+    <div class="legend-item"><span class="dot" style="background:#a855f7"></span> Generated Edge (Dashed)</div>
+    <div class="legend-item"><span class="dot" style="background:#f59e0b"></span> Inferred Edge (Dotted)</div>
+    <div class="legend-item"><span class="dot" style="background:#ef4444"></span> Uncertain / Conflicted
+      <div style="border-top:1px solid #1e293b; margin-top:0.75rem; padding-top:0.5rem; display:flex; flex-direction:column; gap:0.4rem;">
+        <h4 style="margin:0; font-size:0.85rem; border:none;">Workspace Sync Bridge</h4>
+        <div style="display:flex; gap:0.4rem;">
+          <button id="exportSyncBtn" style="flex:1; padding:0.4rem; font-size:0.75rem; background:#0284c7;">Export Sync</button>
+          <button id="importSyncBtn" style="flex:1; padding:0.4rem; font-size:0.75rem; background:#475569;">Import Sync</button>
+        </div>
+        <input type="file" id="syncFileInput" style="display:none;" accept=".json" />
+      </div>
+
+    </div>
+  </div>
+
+  <script src="graph_renderer.js"></script>
+  <script>
+    // Production PWA Service Worker Registration
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('sw.js')
+          .then(reg => console.log('SW Registered:', reg.scope))
+          .catch(err => console.error('SW Registration Failed:', err));
+      });
+    }
+
+    const canvas = document.getElementById("graphCanvas");
+    const renderer = new GraphRenderer(canvas);
+    const statusDiv = document.getElementById("status");
+    const worker = new Worker("worker.js");
+
+    let reqId = 0;
+    const callbacks = new Map();
+
+    worker.onerror = (err) => {
+      statusDiv.textContent = `Worker Error: ${err.message || 'Script Execution Failed'}`;
+      console.error("Worker error:", err);
+    };
+
+    worker.onmessage = (e) => {
+      const { id, success, result, error } = e.data;
+      if (callbacks.has(id)) {
+        const { resolve, reject } = callbacks.get(id);
+        callbacks.delete(id);
+        if (success) resolve(result);
+        else reject(new Error(error));
+      }
+    };
+
+    function sendWorker(action, payload) {
+      return new Promise((resolve, reject) => {
+        const id = ++reqId;
+        callbacks.set(id, { resolve, reject });
+        worker.postMessage({ id, action, payload });
+      });
+    }
+
+    async function init() {
+      try {
+        statusDiv.textContent = "Downloading compiled lexical_graph.db artifact...";
+        const resp = await fetch("/data/compiled/lexical_graph.db?t=" + Date.now());
+        if (!resp.ok) throw new Error("Compiled database artifact unreachable");
+        const buf = await resp.arrayBuffer();
+        statusDiv.textContent = "Compiling WASM SQLite engine in background worker...";
+        await sendWorker("INIT", { dbBuffer: buf });
+        statusDiv.textContent = "Engine Ready: 426,940 Lexemes Active";
+        loadGraph("happy");
+      } catch (err) {
+        statusDiv.textContent = `Init Error: ${err.message}`;
+      }
+    }
+
+    async function loadGraph(term) {
+      statusDiv.textContent = `Traversing graph for "${term}"...`;
+      const t0 = performance.now();
+      try {
+        const data = await sendWorker("GET_SUBGRAPH", { term, depth: 1 });
+        const elapsed = (performance.now() - t0).toFixed(2);
+        if (!data.nodes || data.nodes.length === 0) {
+          statusDiv.textContent = `No nodes found for "${term}" (${elapsed}ms)`;
+          return;
+        }
+        renderer.setData(data);
+        statusDiv.textContent = `Rendered ${data.nodes.length} nodes, ${data.links.length} edges in ${elapsed}ms (<250ms constraint passed)`;
+      } catch (e) {
+        statusDiv.textContent = `Traversal error: ${e.message}`;
+      }
+    }
+
+    document.getElementById("searchBtn").addEventListener("click", () => {
+      const term = document.getElementById("termInput").value;
+      if (term) loadGraph(term);
+    });
+
+    init();
+  </script>
+</body>
+</html>

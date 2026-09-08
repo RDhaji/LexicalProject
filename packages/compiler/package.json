@@ -1,0 +1,10 @@
+{
+  "name": "@lexical-explorer/compiler",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Deterministic SQLite graph compiler, FTS5 indexer, and manifest builder",
+  "main": "index.js",
+  "scripts": {
+    "test": "node tests/test_compiler.js"
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "name": "@lexical-explorer/source-unimorph",
+  "version": "1.0.0",
+  "private": true,
+  "description": "UniMorph TSV paradigm parser and feature bundle normalizer for Lexical Explorer",
+  "main": "index.js",
+  "scripts": {
+    "test": "node tests/test_unimorph_parser.js"
+  }
+}

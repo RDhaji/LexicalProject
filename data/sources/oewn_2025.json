@@ -1,0 +1,43 @@
+{
+  "lexicon": {
+    "id": "oewn_eng_test",
+    "label": "Open English WordNet 2025 Test Slice",
+    "language": "eng",
+    "entries": [
+      {
+        "id": "oewn-run-v",
+        "lemma": "run",
+        "pos": "v",
+        "senses": [
+          {
+            "id": "oewn-run-v-02084071",
+            "synset": "oewn-02084071-v"
+          }
+        ]
+      },
+      {
+        "id": "oewn-fast-a",
+        "lemma": "fast",
+        "pos": "a",
+        "senses": [
+          {
+            "id": "oewn-fast-a-01023456",
+            "synset": "oewn-01023456-a"
+          }
+        ]
+      }
+    ],
+    "synsets": [
+      {
+        "id": "oewn-02084071-v",
+        "pos": "v",
+        "definition": "move fast by using one's feet, with one foot always off the ground"
+      },
+      {
+        "id": "oewn-01023456-a",
+        "pos": "a",
+        "definition": "acting or moving or capable of acting or moving quickly"
+      }
+    ]
+  }
+}

@@ -1,0 +1,448 @@
+{
+  "metadata": {
+    "fixture_version": "1.0.0",
+    "description": "Curated vertical slice fixture covering homographs, suppletion, derivations, and source disagreements.",
+    "target_words": [
+      "run",
+      "fast",
+      "happy",
+      "go",
+      "good",
+      "bad",
+      "bank",
+      "write",
+      "teach"
+    ]
+  },
+  "lexemes": [
+    {
+      "id": "lex-run-v",
+      "lemma": "run",
+      "normalized_lemma": "run",
+      "pos": "VERB",
+      "lexeme_key": "eng:run:VERB",
+      "source_presence": [
+        "OEWN_2025",
+        "WIKTIONARY_KAIKKI"
+      ],
+      "status": "CANONICAL"
+    },
+    {
+      "id": "lex-run-n",
+      "lemma": "run",
+      "normalized_lemma": "run",
+      "pos": "NOUN",
+      "lexeme_key": "eng:run:NOUN",
+      "source_presence": [
+        "OEWN_2025",
+        "WIKTIONARY_KAIKKI"
+      ],
+      "status": "CANONICAL"
+    },
+    {
+      "id": "lex-runner-n",
+      "lemma": "runner",
+      "normalized_lemma": "runner",
+      "pos": "NOUN",
+      "lexeme_key": "eng:runner:NOUN",
+      "source_presence": [
+        "OEWN_2025"
+      ],
+      "status": "CANONICAL"
+    },
+    {
+      "id": "lex-fast-adj",
+      "lemma": "fast",
+      "normalized_lemma": "fast",
+      "pos": "ADJECTIVE",
+      "lexeme_key": "eng:fast:ADJECTIVE",
+      "source_presence": [
+        "OEWN_2025"
+      ],
+      "status": "CANONICAL"
+    },
+    {
+      "id": "lex-fast-adv",
+      "lemma": "fast",
+      "normalized_lemma": "fast",
+      "pos": "ADVERB",
+      "lexeme_key": "eng:fast:ADVERB",
+      "source_presence": [
+        "OEWN_2025"
+      ],
+      "status": "CANONICAL"
+    },
+    {
+      "id": "lex-happy-adj",
+      "lemma": "happy",
+      "normalized_lemma": "happy",
+      "pos": "ADJECTIVE",
+      "lexeme_key": "eng:happy:ADJECTIVE",
+      "source_presence": [
+        "OEWN_2025"
+      ],
+      "status": "CANONICAL"
+    },
+    {
+      "id": "lex-unhappy-adj",
+      "lemma": "unhappy",
+      "normalized_lemma": "unhappy",
+      "pos": "ADJECTIVE",
+      "lexeme_key": "eng:unhappy:ADJECTIVE",
+      "source_presence": [
+        "OEWN_2025"
+      ],
+      "status": "CANONICAL"
+    },
+    {
+      "id": "lex-happiness-n",
+      "lemma": "happiness",
+      "normalized_lemma": "happiness",
+      "pos": "NOUN",
+      "lexeme_key": "eng:happiness:NOUN",
+      "source_presence": [
+        "OEWN_2025"
+      ],
+      "status": "CANONICAL"
+    },
+    {
+      "id": "lex-go-v",
+      "lemma": "go",
+      "normalized_lemma": "go",
+      "pos": "VERB",
+      "lexeme_key": "eng:go:VERB",
+      "source_presence": [
+        "OEWN_2025"
+      ],
+      "status": "CANONICAL"
+    },
+    {
+      "id": "lex-goal-n",
+      "lemma": "goal",
+      "normalized_lemma": "goal",
+      "pos": "NOUN",
+      "lexeme_key": "eng:goal:NOUN",
+      "source_presence": [
+        "OEWN_2025"
+      ],
+      "status": "CANONICAL"
+    },
+    {
+      "id": "lex-good-adj",
+      "lemma": "good",
+      "normalized_lemma": "good",
+      "pos": "ADJECTIVE",
+      "lexeme_key": "eng:good:ADJECTIVE",
+      "source_presence": [
+        "OEWN_2025"
+      ],
+      "status": "CANONICAL"
+    },
+    {
+      "id": "lex-bad-adj",
+      "lemma": "bad",
+      "normalized_lemma": "bad",
+      "pos": "ADJECTIVE",
+      "lexeme_key": "eng:bad:ADJECTIVE",
+      "source_presence": [
+        "OEWN_2025"
+      ],
+      "status": "CANONICAL"
+    },
+    {
+      "id": "lex-bank-fin-n",
+      "lemma": "bank",
+      "normalized_lemma": "bank",
+      "pos": "NOUN",
+      "lexeme_key": "eng:bank:NOUN:financial",
+      "source_presence": [
+        "OEWN_2025"
+      ],
+      "status": "CANONICAL"
+    },
+    {
+      "id": "lex-bank-riv-n",
+      "lemma": "bank",
+      "normalized_lemma": "bank",
+      "pos": "NOUN",
+      "lexeme_key": "eng:bank:NOUN:river",
+      "source_presence": [
+        "OEWN_2025"
+      ],
+      "status": "CANONICAL"
+    }
+  ],
+  "forms": [
+    {
+      "id": "form-run",
+      "surface": "run",
+      "normalized_surface": "run",
+      "form_type": "BASE",
+      "features": {
+        "tense": "pres",
+        "number": "non-3sg"
+      },
+      "source": "UNIMORPH_ENG",
+      "evidence": "EXPLICIT",
+      "confidence": 1
+    },
+    {
+      "id": "form-runs",
+      "surface": "runs",
+      "normalized_surface": "runs",
+      "form_type": "INFLECTED",
+      "features": {
+        "tense": "pres",
+        "person": "3",
+        "number": "sg"
+      },
+      "source": "UNIMORPH_ENG",
+      "evidence": "EXPLICIT",
+      "confidence": 1
+    },
+    {
+      "id": "form-ran",
+      "surface": "ran",
+      "normalized_surface": "ran",
+      "form_type": "IRREGULAR",
+      "features": {
+        "tense": "past"
+      },
+      "source": "UNIMORPH_ENG",
+      "evidence": "EXPLICIT",
+      "confidence": 1
+    },
+    {
+      "id": "form-running",
+      "surface": "running",
+      "normalized_surface": "running",
+      "form_type": "INFLECTED",
+      "features": {
+        "aspect": "prog",
+        "form": "participle"
+      },
+      "source": "UNIMORPH_ENG",
+      "evidence": "EXPLICIT",
+      "confidence": 1
+    },
+    {
+      "id": "form-faster",
+      "surface": "faster",
+      "normalized_surface": "faster",
+      "form_type": "INFLECTED",
+      "features": {
+        "degree": "comparative"
+      },
+      "source": "UNIMORPH_ENG",
+      "evidence": "EXPLICIT",
+      "confidence": 1
+    },
+    {
+      "id": "form-fastest",
+      "surface": "fastest",
+      "normalized_surface": "fastest",
+      "form_type": "INFLECTED",
+      "features": {
+        "degree": "superlative"
+      },
+      "source": "UNIMORPH_ENG",
+      "evidence": "EXPLICIT",
+      "confidence": 1
+    },
+    {
+      "id": "form-went",
+      "surface": "went",
+      "normalized_surface": "went",
+      "form_type": "SUPPLETIVE",
+      "features": {
+        "tense": "past"
+      },
+      "source": "UNIMORPH_ENG",
+      "evidence": "EXPLICIT",
+      "confidence": 1
+    },
+    {
+      "id": "form-better",
+      "surface": "better",
+      "normalized_surface": "better",
+      "form_type": "SUPPLETIVE",
+      "features": {
+        "degree": "comparative"
+      },
+      "source": "UNIMORPH_ENG",
+      "evidence": "EXPLICIT",
+      "confidence": 1
+    },
+    {
+      "id": "form-best",
+      "surface": "best",
+      "normalized_surface": "best",
+      "form_type": "SUPPLETIVE",
+      "features": {
+        "degree": "superlative"
+      },
+      "source": "UNIMORPH_ENG",
+      "evidence": "EXPLICIT",
+      "confidence": 1
+    },
+    {
+      "id": "form-worse",
+      "surface": "worse",
+      "normalized_surface": "worse",
+      "form_type": "SUPPLETIVE",
+      "features": {
+        "degree": "comparative"
+      },
+      "source": "UNIMORPH_ENG",
+      "evidence": "EXPLICIT",
+      "confidence": 1
+    },
+    {
+      "id": "form-worst",
+      "surface": "worst",
+      "normalized_surface": "worst",
+      "form_type": "SUPPLETIVE",
+      "features": {
+        "degree": "superlative"
+      },
+      "source": "UNIMORPH_ENG",
+      "evidence": "EXPLICIT",
+      "confidence": 1
+    }
+  ],
+  "claims": [
+    {
+      "id": "claim-etym-bank-1",
+      "source_id": "OEWN_2025",
+      "source_version": "2025",
+      "subject_type": "LEXEME",
+      "subject_source_id": "bank",
+      "predicate": "ETYMOLOGICALLY_FROM",
+      "object_type": "ETYMON",
+      "object_source_id": "gmw-pro:*banki-",
+      "raw_payload": {
+        "donor_lang": "Proto-Germanic",
+        "etymon": "*banki-"
+      },
+      "evidence_type": "EXPLICIT",
+      "confidence": 0.85
+    },
+    {
+      "id": "claim-etym-bank-2",
+      "source_id": "WIKTIONARY_KAIKKI_20260805",
+      "source_version": "2026-08-05",
+      "subject_type": "LEXEME",
+      "subject_source_id": "bank",
+      "predicate": "ETYMOLOGICALLY_FROM",
+      "object_type": "ETYMON",
+      "object_source_id": "fro:banque",
+      "raw_payload": {
+        "donor_lang": "Old French / Italian",
+        "etymon": "banco"
+      },
+      "evidence_type": "EXPLICIT",
+      "confidence": 0.88
+    }
+  ],
+  "relations": [
+    {
+      "id": "rel-run-has-runs",
+      "subject_type": "LEXEME",
+      "subject_id": "lex-run-v",
+      "relation_type": "HAS_FORM",
+      "object_type": "FORM",
+      "object_id": "form-runs",
+      "evidence_type": "EXPLICIT",
+      "confidence": 1,
+      "resolution_status": "RESOLVED"
+    },
+    {
+      "id": "rel-run-has-ran",
+      "subject_type": "LEXEME",
+      "subject_id": "lex-run-v",
+      "relation_type": "HAS_FORM",
+      "object_type": "FORM",
+      "object_id": "form-ran",
+      "evidence_type": "EXPLICIT",
+      "confidence": 1,
+      "resolution_status": "RESOLVED"
+    },
+    {
+      "id": "rel-run-has-running",
+      "subject_type": "LEXEME",
+      "subject_id": "lex-run-v",
+      "relation_type": "HAS_FORM",
+      "object_type": "FORM",
+      "object_id": "form-running",
+      "evidence_type": "EXPLICIT",
+      "confidence": 1,
+      "resolution_status": "RESOLVED"
+    },
+    {
+      "id": "rel-runner-derived-run",
+      "subject_type": "LEXEME",
+      "subject_id": "lex-runner-n",
+      "relation_type": "DERIVED_FROM",
+      "object_type": "LEXEME",
+      "object_id": "lex-run-v",
+      "evidence_type": "EXPLICIT",
+      "confidence": 1,
+      "resolution_status": "RESOLVED"
+    },
+    {
+      "id": "rel-fast-has-faster",
+      "subject_type": "LEXEME",
+      "subject_id": "lex-fast-adj",
+      "relation_type": "HAS_FORM",
+      "object_type": "FORM",
+      "object_id": "form-faster",
+      "evidence_type": "EXPLICIT",
+      "confidence": 1,
+      "resolution_status": "RESOLVED"
+    },
+    {
+      "id": "rel-go-has-went",
+      "subject_type": "LEXEME",
+      "subject_id": "lex-go-v",
+      "relation_type": "HAS_FORM",
+      "object_type": "FORM",
+      "object_id": "form-went",
+      "evidence_type": "EXPLICIT",
+      "confidence": 1,
+      "resolution_status": "RESOLVED"
+    },
+    {
+      "id": "rel-good-has-better",
+      "subject_type": "LEXEME",
+      "subject_id": "lex-good-adj",
+      "relation_type": "HAS_FORM",
+      "object_type": "FORM",
+      "object_id": "form-better",
+      "evidence_type": "EXPLICIT",
+      "confidence": 1,
+      "resolution_status": "RESOLVED"
+    },
+    {
+      "id": "rel-bad-has-worse",
+      "subject_type": "LEXEME",
+      "subject_id": "lex-bad-adj",
+      "relation_type": "HAS_FORM",
+      "object_type": "FORM",
+      "object_id": "form-worse",
+      "evidence_type": "EXPLICIT",
+      "confidence": 1,
+      "resolution_status": "RESOLVED"
+    },
+    {
+      "id": "rel-bank-etym-conflict",
+      "subject_type": "LEXEME",
+      "subject_id": "lex-bank-fin-n",
+      "relation_type": "ETYMOLOGICALLY_FROM",
+      "object_type": "ETYMON",
+      "object_id": "gmw-pro:*banki-",
+      "evidence_type": "UNCERTAIN",
+      "confidence": 0.85,
+      "resolution_status": "CONFLICTING"
+    }
+  ]
+}

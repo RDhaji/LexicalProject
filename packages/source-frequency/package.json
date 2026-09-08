@@ -1,0 +1,10 @@
+{
+  "name": "@lexical-explorer/source-frequency",
+  "version": "1.0.0",
+  "private": true,
+  "description": "SUBTLEX-US frequency parser and lexeme ranking annotator for Lexical Explorer",
+  "main": "index.js",
+  "scripts": {
+    "test": "node tests/test_frequency_parser.js"
+  }
+}

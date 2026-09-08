@@ -1,0 +1,10 @@
+{
+  "name": "@lexical-explorer/inference",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Controlled, evidence-backed morphological and semantic inference engine for Lexical Explorer",
+  "main": "index.js",
+  "scripts": {
+    "test": "node tests/test_inference.js"
+  }
+}

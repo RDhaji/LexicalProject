@@ -1,0 +1,10 @@
+{
+  "name": "@lexical-explorer/derivation-graph",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Derivation network and affix decomposition graph for Lexical Explorer",
+  "main": "index.js",
+  "scripts": {
+    "test": "node tests/test_derivation_graph.js"
+  }
+}

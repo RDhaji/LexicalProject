@@ -1,0 +1,10 @@
+{
+  "name": "@lexical-explorer/source-oewn",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Deterministic OEWN 2025 parser and claim emitter for Lexical Explorer",
+  "main": "index.js",
+  "scripts": {
+    "test": "node tests/test_oewn_parser.js"
+  }
+}

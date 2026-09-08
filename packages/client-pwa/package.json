@@ -1,0 +1,10 @@
+{
+  "name": "@lexical-explorer/client-pwa",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Offline PWA client shell, query engine, and why-connected provenance viewer",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "node tests/test_client_pwa.js"
+  }
+}

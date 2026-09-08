@@ -1,0 +1,10 @@
+{
+  "name": "@lexical-explorer/source-wiktionary",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Streaming Wiktextract JSONL parser and claim emitter for Lexical Explorer",
+  "main": "index.js",
+  "scripts": {
+    "test": "node tests/test_wiktionary_parser.js"
+  }
+}

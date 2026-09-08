@@ -1,0 +1,12 @@
+{
+  "name": "@lexical-explorer/schema",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Canonical SQLite DDL and schema verification suite for Lexical Explorer",
+  "scripts": {
+    "test": "node validate_schema.js"
+  },
+  "dependencies": {
+    "sqlite3": "^5.1.7"
+  }
+}

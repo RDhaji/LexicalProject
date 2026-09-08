@@ -1,0 +1,10 @@
+{
+  "name": "@lexical-explorer/morphology",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Deterministic inflectional and derivational morphology engine for Lexical Explorer",
+  "main": "index.js",
+  "scripts": {
+    "test": "node tests/test_morphology.js"
+  }
+}
