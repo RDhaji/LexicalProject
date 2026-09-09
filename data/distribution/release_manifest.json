@@ -1,10 +1,10 @@
 {
   "version": "1.0.0",
-  "timestamp_utc": "2026-09-09 16:57:07",
+  "timestamp_utc": "2026-09-09 17:13:32",
   "artifacts": {
     "lexical_graph.db": {
-      "sha256": "fe3d214364e59bdaa4219759aac330475f405bb48614bc63b061dea853a3dba3",
-      "bytes": 1219391488,
+      "sha256": "764c1f2b9c59b7ee56cd10b98de12059a61c4d70c023e13c4948084883aefa65",
+      "bytes": 1219399680,
       "counts": {
         "lexemes": 1832881,
         "forms": 1177331,
