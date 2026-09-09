@@ -1145,3 +1145,13 @@ Active Architectural Gate: Gate 0
 - Unblocked Tasks: Scale-up pipeline streaming audit and staging-to-resolution parity verification
 [main 7ad7169] docs: complete PIPELINE_STAGE_VALIDATION milestone and record verification in PROGRESS.mdcat
  1 file changed, 9 insertions(+)
+
+## [2026-09-09T20:56:00Z] Milestone: SCALE_UP_PIPELINE_STREAMING_AUDIT
+- Status: COMPLETED
+- Verification Gates:
+  - Upstream Source Verification: PASSED (Kaikki JSONL, UniMorph English, OEWN 2025 YAML verified on disk)
+  - Staging Counts Verification: PASSED (652,536 raw claims, 107,537 synsets)
+  - Resolution Parity Verification: PASSED (426,939 lexemes, 648,336 forms, 651,598 relations)
+  - Provenance Isolation Invariant: PASSED (1:1 claim-to-relation linkage maintained within 1% tolerance)
+  - Execution Duration: 0.06s
+- Unblocked Tasks: Proceed to Milestone CORPUS_SCALEUP_INGESTION_BENCHMARK or STAGING_TO_DISTRIBUTION_COMPILATION_AUDIT
