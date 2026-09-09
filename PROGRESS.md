@@ -1066,3 +1066,12 @@ Active Architectural Gate: Gate 0
 - Quality Gates: Gates A through G validated with 0 dangling edges and strict user partition isolation
 - Regression Suite: 85 passed, 0 failed via pytest (46.42s)
 - Unblocked Tasks: Milestone TRACK_2_BASELINE_SYSTEMS
+
+## [2026-09-09T20:15:00Z] Milestone: TRACK_2_BASELINE_SYSTEMS
+- Status: COMPLETED
+- Governance: Invariants 1-8 verified; ADR-012 (phonetic layer) and ADR-013 (cross-lingual Spanish pilot) integrated and tested
+- Projections: `pronunciations`, `search_phonetic_index`, `lexemes_es`, and `forms_es` populated and verified
+- Vertical Fixtures: Verified across 7 primary fixtures (`run`, `fast`, `happy`, `go`, `good`, `bad`, `bank`)
+- Release Artifacts: Signed and updated in data/distribution/release_manifest.json
+- Regression Suite: 88 passed, 0 failed via pytest (48.73s)
+- Unblocked Tasks: Milestone TRACK_2_PRODUCTION_AUDIT
