@@ -1,20 +1,22 @@
 {
-  "release": "v1.0.0",
-  "timestamp": "2026-09-09T15:24:33.673629+00:00",
+  "version": "1.0.0",
+  "timestamp_utc": "2026-09-09 17:13:32",
   "artifacts": {
     "lexical_graph.db": {
-      "sha256": "cf259ae2f16aa0d462b56bc8e773257de7c7b942ff33349b9ed88f8404e3f0ee",
-      "size": 527556608
+      "sha256": "764c1f2b9c59b7ee56cd10b98de12059a61c4d70c023e13c4948084883aefa65",
+      "bytes": 1219399680,
+      "counts": {
+        "lexemes": 1832881,
+        "forms": 1177331,
+        "morphology_edges": 2233655,
+        "semantic_edges": 114616,
+        "synsets": 107537
+      }
+    },
+    "user_workspace.db": {
+      "sha256": "322125d3d5785308001338e46a8c3ed62c3c3649550844d2f6000929c6f69292",
+      "bytes": 28672
     }
   },
-  "quality_gates": {
-    "A": "PASSED",
-    "B": "PASSED",
-    "C": "PASSED",
-    "D": "PASSED",
-    "E": "PASSED",
-    "F": "PASSED",
-    "G": "PASSED"
-  },
-  "max_fixture_latency_ms": 0.178
+  "acceptance_status": "PASSED"
 }
