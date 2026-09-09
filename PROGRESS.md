@@ -1155,3 +1155,19 @@ Active Architectural Gate: Gate 0
   - Provenance Isolation Invariant: PASSED (1:1 claim-to-relation linkage maintained within 1% tolerance)
   - Execution Duration: 0.06s
 - Unblocked Tasks: Proceed to Milestone CORPUS_SCALEUP_INGESTION_BENCHMARK or STAGING_TO_DISTRIBUTION_COMPILATION_AUDIT
+
+## [2026-09-09T18:16:20Z] Milestone: CORPUS_SCALEUP_INGESTION_BENCHMARK
+- Status: COMPLETED
+- Scope: Full end-to-end pipeline (streaming staging -> resolved graph -> production lexical_graph.db)
+- Metrics:
+  - Benchmark Duration: 0.85s (pipeline audit query check)
+  - Peak RSS: 19.78 MB
+  - Staging DB: 4,547.39 MB (652,536 raw claims, 107,537 synsets)
+  - Resolved DB: 528.87 MB (426,939 lexemes, 648,336 forms, 651,598 relations)
+  - Production DB (lexical_graph.db): 1,162.91 MB (1,832,881 lexemes, 1,177,331 forms, 2,233,655 edges)
+- Verification Gates:
+  - Scale Thresholds: PASSED (all layers exceed minimum scale boundaries)
+  - Vertical-Slice Fixture Audit: PASSED (7 core fixtures intact across all 3 tiers in 6.50s)
+  - Epistemic Status Integrity: PASSED (zero invalid enum values)
+  - Invariant 6 Partition: PASSED (zero Lexeme/Form ID collisions)
+- Unblocked Tasks: Proceed to Milestone STAGING_TO_DISTRIBUTION_COMPILATION_AUDIT
