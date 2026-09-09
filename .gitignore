@@ -1,12 +1,5 @@
-__pycache__/
 *.pyc
-.pytest_cache/
+__pycache__/
 .venv/
-data/raw/
-data/staging/
-data/compiled/
-data/distribution/*.db
-dist/data/*.db
-*.db
-*.db-wal
-*.db-shm
+monitoring_telemetry.json
+maintenance_telemetry.json

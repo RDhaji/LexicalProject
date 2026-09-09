@@ -87,6 +87,12 @@ def add_bookmark(entity_id: str, entity_type: str) -> str:
         insert_dict["target_entity_id"] = entity_id
     if "target_entity_type" in cols:
         insert_dict["target_entity_type"] = entity_type
+    if "target_id" in cols:
+        insert_dict["target_id"] = entity_id
+    if "target_type" in cols:
+        insert_dict["target_type"] = entity_type
+    if "target_label" in cols:
+        insert_dict["target_label"] = entity_id
 
     active_keys = [k for k in insert_dict if k in cols]
     col_names = ", ".join(active_keys)
@@ -113,12 +119,22 @@ def add_note(entity_id: str, entity_type: str, note_text: str) -> str:
         "entity_type": entity_type,
         "note_text": note_text,
         "updated_at": now,
+        "target_id": entity_id,
+        "target_type": entity_type,
+        "note_title": "Note",
+        "note_body": note_text,
         "created_at": now
     }
     if "target_entity_id" in cols:
         insert_dict["target_entity_id"] = entity_id
     if "target_entity_type" in cols:
         insert_dict["target_entity_type"] = entity_type
+    if "target_id" in cols:
+        insert_dict["target_id"] = entity_id
+    if "target_type" in cols:
+        insert_dict["target_type"] = entity_type
+    if "target_label" in cols:
+        insert_dict["target_label"] = entity_id
     if "note_content" in cols:
         insert_dict["note_content"] = note_text
 

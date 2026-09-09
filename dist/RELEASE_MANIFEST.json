@@ -1,6 +1,6 @@
 {
   "release": "v1.0.0",
-  "timestamp": "2026-09-07T17:31:08.346514+00:00",
+  "timestamp": "2026-09-09T02:09:49.479388+00:00",
   "artifacts": {
     "lexical_graph.db": {
       "sha256": "e42e50b3ad6001a6d265fa8d0852ef9c893202bea719052d555b515997a33da8",
@@ -16,5 +16,5 @@
     "F": "PASSED",
     "G": "PASSED"
   },
-  "max_fixture_latency_ms": 0.315
+  "max_fixture_latency_ms": 0.538
 }
