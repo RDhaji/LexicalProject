@@ -14,18 +14,16 @@ def verify_release():
     assert os.path.exists(graph_db), f"Missing {graph_db}"
     assert os.path.exists(workspace_db), f"Missing {workspace_db}"
 
-    # Calculate SHA256 checksums
     def get_hash(path):
         h = hashlib.sha256()
         with open(path, "rb") as f:
-            while chunk := f.read(8192):
+            while chunk := f.read(65536):
                 h.update(chunk)
         return h.hexdigest()
 
     graph_hash = get_hash(graph_db)
     workspace_hash = get_hash(workspace_db)
 
-    # Acceptance Integrity Checks
     conn = sqlite3.connect(graph_db)
     cur = conn.cursor()
 
@@ -36,9 +34,13 @@ def verify_release():
     form_count = cur.fetchone()[0]
 
     cur.execute("SELECT COUNT(*) FROM edges;")
-    edge_count = cur.fetchone()[0]
-    morph_count = edge_count
-    sem_count = 0
+    morph_count = cur.fetchone()[0]
+
+    cur.execute("SELECT COUNT(*) FROM semantic_edges;")
+    sem_count = cur.fetchone()[0]
+
+    cur.execute("SELECT COUNT(*) FROM synsets;")
+    synset_count = cur.fetchone()[0]
 
     cur.execute("PRAGMA integrity_check;")
     integrity = cur.fetchone()[0]
@@ -47,7 +49,7 @@ def verify_release():
     assert integrity == "ok", f"Integrity check failed: {integrity}"
 
     manifest = {
-        "version": "1.0.0-rc1",
+        "version": "1.0.0",
         "timestamp_utc": time.strftime("%Y-%m-%d %H:%M:%S", time.gmtime()),
         "artifacts": {
             "lexical_graph.db": {
@@ -57,7 +59,8 @@ def verify_release():
                     "lexemes": lexeme_count,
                     "forms": form_count,
                     "morphology_edges": morph_count,
-                    "semantic_edges": sem_count
+                    "semantic_edges": sem_count,
+                    "synsets": synset_count
                 }
             },
             "user_workspace.db": {
@@ -72,7 +75,7 @@ def verify_release():
         json.dump(manifest, f, indent=2)
 
     duration = time.time() - start_time
-    print(f"PASS | Artifacts signed | Lexemes: {lexeme_count} | Forms: {form_count} | Edges: {morph_count + sem_count} | Duration: {duration:.3f}s")
+    print(f"PASS | Artifacts signed | Lexemes: {lexeme_count} | Forms: {form_count} | Synsets: {synset_count} | Morph Edges: {morph_count} | Sem Edges: {sem_count} | Duration: {duration:.3f}s")
 
 if __name__ == "__main__":
     verify_release()

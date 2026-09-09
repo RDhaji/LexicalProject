@@ -1,15 +1,16 @@
 {
-  "version": "1.0.0-rc1",
-  "timestamp_utc": "2026-09-09 02:14:28",
+  "version": "1.0.0",
+  "timestamp_utc": "2026-09-09 16:57:07",
   "artifacts": {
     "lexical_graph.db": {
-      "sha256": "e42e50b3ad6001a6d265fa8d0852ef9c893202bea719052d555b515997a33da8",
-      "bytes": 527175680,
+      "sha256": "fe3d214364e59bdaa4219759aac330475f405bb48614bc63b061dea853a3dba3",
+      "bytes": 1219391488,
       "counts": {
-        "lexemes": 1831919,
-        "forms": 578293,
-        "morphology_edges": 651568,
-        "semantic_edges": 0
+        "lexemes": 1832881,
+        "forms": 1177331,
+        "morphology_edges": 2233655,
+        "semantic_edges": 114616,
+        "synsets": 107537
       }
     },
     "user_workspace.db": {
