@@ -3,3 +3,8 @@ __pycache__/
 .venv/
 monitoring_telemetry.json
 maintenance_telemetry.json
+*.db
+*.db-shm
+*.db-wal
+data/
+dist/
