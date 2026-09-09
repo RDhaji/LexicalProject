@@ -28,7 +28,7 @@ class TestStorageAndTraversal(unittest.TestCase):
 
     def test_user_bookmark_and_note_persistence(self):
         """Verify user state writes succeed independently."""
-        test_uuid = "00000000-0000-0000-0000-000000000001"
+        import uuid; test_uuid = f"lex_{uuid.uuid4().hex[:12]}"
         b_id = add_bookmark(test_uuid, "LEXEME")
         n_id = add_note(test_uuid, "LEXEME", "Personal linguistic study note.")
         

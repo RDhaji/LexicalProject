@@ -13,7 +13,7 @@ PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 if PROJECT_ROOT not in sys.path:
     sys.path.insert(0, PROJECT_ROOT)
 
-COMPILED_DB_PATH = os.path.join(PROJECT_ROOT, "data", "compiled", "lexical_graph.db")
+COMPILED_DB_PATH = os.path.join(PROJECT_ROOT, "data", "distribution", "lexical_graph.db")
 
 class TestClientIntegration(unittest.TestCase):
     def setUp(self):
