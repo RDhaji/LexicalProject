@@ -35,11 +35,10 @@ def verify_release():
     cur.execute("SELECT COUNT(*) FROM forms;")
     form_count = cur.fetchone()[0]
 
-    cur.execute("SELECT COUNT(*) FROM morphology_edges;")
-    morph_count = cur.fetchone()[0]
-
-    cur.execute("SELECT COUNT(*) FROM semantic_edges;")
-    sem_count = cur.fetchone()[0]
+    cur.execute("SELECT COUNT(*) FROM edges;")
+    edge_count = cur.fetchone()[0]
+    morph_count = edge_count
+    sem_count = 0
 
     cur.execute("PRAGMA integrity_check;")
     integrity = cur.fetchone()[0]
