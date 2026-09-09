@@ -597,3 +597,9 @@ Active Architectural Gate: Gate 0
 - Governance: ADR-011 APPROVED (Secondary Source Ingestion Pipeline Refinement)
 - Invariants Guarded: Invariants 1-8 active, Quality Gates A-G maintained
 - Unblocked Tasks: Milestone SECONDARY_PIPELINE_REFINEMENT_IMPLEMENTATION
+
+## [2026-09-09T04:58:00Z] Milestone: SECONDARY_PIPELINE_REFINEMENT_IMPLEMENTATION
+- Status: COMPLETED
+- Verification: 83/83 tests passed; drift monitor verified zero invariant, checksum, or isolation regressions
+- Governance: Invariants 1-8 enforced, ADR-011 fully implemented in ingestion/stage_6_claims.py
+- Unblocked Tasks: Milestone FULL_DATASET_VALIDATION_OR_PIPELINE_BENCHMARK
