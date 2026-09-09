@@ -37,7 +37,8 @@ def test_automated_gate_b_user_partition_isolation():
 
 def test_automated_gate_c_zero_dangling_edges():
     conn = sqlite3.connect(LEX_DB)
-    valid_ids = {r[0] for t in ["lexemes", "forms"] for r in conn.execute(f"SELECT id FROM {t}").fetchall()}
+    entity_tables = [r[0] for r in conn.execute("SELECT name FROM sqlite_master WHERE type='table' AND name IN ('lexemes', 'forms', 'constructions', 'lexemes_es', 'forms_es', 'pronunciations')").fetchall()]
+    valid_ids = {r[0] for t in entity_tables for r in conn.execute(f"SELECT id FROM {t}").fetchall()}
     cur = conn.cursor()
     edge_cols = [c[1] for c in cur.execute("PRAGMA table_info(edges)").fetchall()]
     src_c = "source_id" if "source_id" in edge_cols else edge_cols[1]

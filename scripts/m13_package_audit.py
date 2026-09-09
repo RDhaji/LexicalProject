@@ -23,15 +23,23 @@ for (tbl,) in u_conn.execute("SELECT name FROM sqlite_master WHERE type='table'"
     assert not any('lexic' in str(fk).lower() for fk in fk_list), f'Gate B Failed: FK on {tbl}'
 
 # Gate C: Zero Dangling Edges
-src_c = 'source_id' if 'source_id' in edge_cols else edge_cols[1]
-tgt_c = 'target_id' if 'target_id' in edge_cols else edge_cols[2]
-cur.execute(f'''
+src_c = "source_id" if "source_id" in edge_cols else edge_cols[1]
+tgt_c = "target_id" if "target_id" in edge_cols else edge_cols[2]
+cur.execute(f"""
     SELECT count(*) FROM edges e
-    WHERE (NOT EXISTS (SELECT 1 FROM lexemes WHERE id = e.{src_c}) AND NOT EXISTS (SELECT 1 FROM forms WHERE id = e.{src_c}))
-       OR (NOT EXISTS (SELECT 1 FROM forms WHERE id = e.{tgt_c}) AND NOT EXISTS (SELECT 1 FROM lexemes WHERE id = e.{tgt_c}))
-''')
-assert cur.fetchone()[0] == 0, 'Gate C Failed: Dangling edges detected'
-
+    WHERE (
+        NOT EXISTS (SELECT 1 FROM lexemes WHERE id = e.{src_c})
+        AND NOT EXISTS (SELECT 1 FROM forms WHERE id = e.{src_c})
+        AND NOT EXISTS (SELECT 1 FROM lexemes_es WHERE id = e.{src_c})
+        AND NOT EXISTS (SELECT 1 FROM forms_es WHERE id = e.{src_c})
+    ) OR (
+        NOT EXISTS (SELECT 1 FROM forms WHERE id = e.{tgt_c})
+        AND NOT EXISTS (SELECT 1 FROM lexemes WHERE id = e.{tgt_c})
+        AND NOT EXISTS (SELECT 1 FROM lexemes_es WHERE id = e.{tgt_c})
+        AND NOT EXISTS (SELECT 1 FROM forms_es WHERE id = e.{tgt_c})
+    )
+""")
+assert cur.fetchone()[0] == 0, "Gate C Failed: Dangling edges detected"
 # Gate D & E: Vertical Slice Fixtures & Latency SLA (<250ms)
 fixtures = ['run', 'fast', 'happy', 'go', 'good', 'bad', 'bank']
 latencies = []

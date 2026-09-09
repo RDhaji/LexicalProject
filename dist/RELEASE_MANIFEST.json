@@ -1,10 +1,10 @@
 {
   "release": "v1.0.0",
-  "timestamp": "2026-09-09T02:09:49.479388+00:00",
+  "timestamp": "2026-09-09T15:24:33.673629+00:00",
   "artifacts": {
     "lexical_graph.db": {
-      "sha256": "e42e50b3ad6001a6d265fa8d0852ef9c893202bea719052d555b515997a33da8",
-      "size": 527175680
+      "sha256": "cf259ae2f16aa0d462b56bc8e773257de7c7b942ff33349b9ed88f8404e3f0ee",
+      "size": 527556608
     }
   },
   "quality_gates": {
@@ -16,5 +16,5 @@
     "F": "PASSED",
     "G": "PASSED"
   },
-  "max_fixture_latency_ms": 0.538
+  "max_fixture_latency_ms": 0.178
 }

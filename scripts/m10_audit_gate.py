@@ -20,7 +20,10 @@ cur.execute("""
     WHERE e.relation_type != 'HAS_FORM' 
       AND (
         NOT EXISTS (SELECT 1 FROM lexemes l WHERE l.id = e.source_id) OR 
-        NOT EXISTS (SELECT 1 FROM lexemes l WHERE l.id = e.target_id)
+        (
+          NOT EXISTS (SELECT 1 FROM lexemes l WHERE l.id = e.target_id) AND
+          NOT EXISTS (SELECT 1 FROM lexemes_es les WHERE les.id = e.target_id)
+        )
       );
 """)
 dangling_semantics = cur.fetchone()[0]

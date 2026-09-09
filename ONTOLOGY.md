@@ -111,3 +111,35 @@ All entities maintain deterministic UUIDv5 identifiers generated from namespace 
 ### Lexeme Attributes
 - `frequency_zipf`: Zipf scale frequency value (REAL, NULL if unattested).
 - `corpus_source`: Provenance identifier for frequency metadata (TEXT, NULL if unattested).
+
+
+### Entity: PRONUNCIATION
+- **id**: UUIDv5 deterministic identifier
+- **target_id**: UUIDv5 reference to `lexemes.id` or `forms.id`
+- **target_type**: Enum (`LEXEME`, `FORM`)
+- **notation**: Enum (`IPA`, `ARPABET`)
+- **transcription**: TEXT (attested phonetic transcription)
+- **variety**: TEXT (dialect tag, e.g., `en-US`, `en-GB`)
+- **epistemic_class**: Enum (`ATTESTED`, `EXPLICIT`)
+- **provenance_id**: TEXT
+
+### Relation: HAS_PRONUNCIATION
+- **Source**: `LEXEMES` | `FORMS`
+- **Target**: `PRONUNCIATION`
+- **Allowed Epistemic Classes**: `EXPLICIT`, `ATTESTED`
+- **Invariants**:
+  - Lemma citation pronunciations attach strictly to `lexemes.id`.
+  - Inflected surface realization pronunciations attach strictly to `forms.id` (Invariant 6).
+  - Missing pronunciations remain `NULL` (Invariant 2).
+  - Phonetic distance must never generate morphological or semantic edges (Invariant 4).
+
+
+### Relation: TRANSLATION_OF
+- **Source**: `LEXEMES`
+- **Target**: `LEXEMES`
+- **Allowed Epistemic Classes**: `EXPLICIT`, `ATTESTED`, `UNCERTAIN`
+- **Invariants**:
+  - Cross-lingual edges connect Lexemes only; Forms never connect across languages (Invariant 6).
+  - Attestation must come from curated bilingual dictionaries; string overlap strictly prohibited (Invariant 4).
+  - Polysemous mismatches or contested alignments must be marked `UNCERTAIN` (Invariant 3).
+  - Unaligned lexemes remain NULL (Invariant 2).
