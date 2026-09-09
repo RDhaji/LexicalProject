@@ -74,8 +74,9 @@ def run_stage_6() -> bool:
             JOIN forms f ON r.object_id = f.id
             JOIN claims c ON c.source = 'UNIMORPH_ENG' 
                          AND c.subject = l.lemma 
-                         AND c.object_json LIKE '%' || f.surface || '%'
+                          AND json_extract(c.object_json, '$.surface') = f.surface
             WHERE r.relation_type = 'HAS_FORM';
+        """)
 
         # Link ETYMOLOGICALLY_FROM relations to Kaikki etymology claims
         dest_cursor.execute("""
@@ -84,7 +85,6 @@ def run_stage_6() -> bool:
             FROM relations r
             JOIN claims c ON c.predicate = 'ETYMOLOGICALLY_FROM'
             WHERE r.relation_type = 'ETYMOLOGICALLY_FROM';
-        """)
         """)
         
         # Attach SUBTLEX frequency summaries directly to canonical Lexemes
