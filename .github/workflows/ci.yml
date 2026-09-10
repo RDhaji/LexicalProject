@@ -16,9 +16,9 @@ jobs:
         with:
           node-version: '20'
       - name: Install Python Dependencies
-        run: pip install -r requirements.txt || true
+        run: pip install -r requirements.txt
       - name: Run Pytest Regression Suite
-        run: pytest -q
+        run: python3 -m pytest -q -ra
       - name: Execute SQLite WASM Runtime Harness
         run: node scripts/test_wasm_node_runner.js
       - name: Run Day 2 Drift Monitor
