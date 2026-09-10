@@ -6,7 +6,10 @@ maintenance_telemetry.json
 *.db
 *.db-shm
 *.db-wal
-data/
+data/*
+!data/distribution/
+!data/distribution/fixture_slice.db
+!data/distribution/release_manifest.json
 dist/
 backups/
 .DS_Store

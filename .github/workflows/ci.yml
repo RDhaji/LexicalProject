@@ -19,6 +19,8 @@ jobs:
           node-version: '20'
       - name: Install Python Dependencies
         run: pip install -r requirements.txt
+      - name: Prepare Test Fixtures
+        run: python3 scripts/setup_ci_databases.py
       - name: Run Pytest Regression Suite
         run: python3 -m pytest -ra --tb=short
       - name: Execute SQLite WASM Runtime Harness
