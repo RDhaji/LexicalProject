@@ -12,7 +12,22 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-      - run: pip install -r requirements.txt || true
-      - run: pytest -q
-      - run: python3 scripts/day2_drift_monitor.py
-      - run: python3 scripts/ops_autonomous_maintenance.py
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Install Python Dependencies
+        run: pip install -r requirements.txt || true
+      - name: Run Pytest Regression Suite
+        run: pytest -q
+      - name: Execute SQLite WASM Runtime Harness
+        run: node scripts/test_wasm_node_runner.js
+      - name: Run Day 2 Drift Monitor
+        run: python3 scripts/day2_drift_monitor.py
+      - name: Run Autonomous Maintenance Engine
+        run: python3 scripts/ops_autonomous_maintenance.py
+  container-build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build Container Image
+        run: docker build -t lexical-explorer:ci-test -f Dockerfile .
