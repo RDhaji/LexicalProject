@@ -4,8 +4,8 @@ import unittest
 class TestStage53VisualizerViews(unittest.TestCase):
 
     def setUp(self):
-        self.graph_js = "/Users/rd/Desktop/LexicalProject/web/js/graph_view.js"
-        self.paradigm_js = "/Users/rd/Desktop/LexicalProject/web/js/paradigm_view.js"
+        self.graph_js = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "web", "js", "graph_view.js"))
+        self.paradigm_js = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "web", "js", "paradigm_view.js"))
 
     def test_view_components_exist(self):
         self.assertTrue(os.path.exists(self.graph_js))

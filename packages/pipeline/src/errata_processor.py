@@ -55,6 +55,6 @@ def process_pending_errata(db_path: str) -> int:
     return processed_count
 
 if __name__ == "__main__":
-    db_file = "/Users/rd/Desktop/LexicalProject/data/lexical_graph.db"
+    db_file = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", "..", "data", "lexical_graph.db"))
     count = process_pending_errata(db_file)
     print(f"Processed {count} errata records.")

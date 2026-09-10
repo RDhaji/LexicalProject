@@ -3,7 +3,7 @@ import json
 import sys
 import os
 
-project_root = "/Users/rd/Desktop/LexicalProject"
+project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 graph_db_path = os.path.join(project_root, "data/compiled/lexical_graph.db")
 workspace_db_path = os.path.join(project_root, "data/user_workspace.db")
 

@@ -4,7 +4,7 @@ import unittest
 class TestStage54ProvenanceView(unittest.TestCase):
 
     def setUp(self):
-        self.provenance_js = "/Users/rd/Desktop/LexicalProject/web/js/provenance_view.js"
+        self.provenance_js = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "web", "js", "provenance_view.js"))
 
     def test_provenance_inspector_contract(self):
         self.assertTrue(os.path.exists(self.provenance_js))

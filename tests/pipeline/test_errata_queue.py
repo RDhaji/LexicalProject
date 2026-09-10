@@ -1,3 +1,4 @@
+import os
 import sqlite3
 import pytest
 from packages.pipeline.src.errata_processor import process_pending_errata
@@ -6,7 +7,8 @@ from packages.pipeline.src.errata_processor import process_pending_errata
 def test_db(tmp_path):
     db_path = str(tmp_path / "test_lexical_graph.db")
     conn = sqlite3.connect(db_path)
-    with open("/Users/rd/Desktop/LexicalProject/migrations/003_create_errata_queue.sql") as f:
+    mig_path = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", "migrations", "003_create_errata_queue.sql"))
+    with open(mig_path) as f:
         conn.executescript(f.read())
     conn.execute("""
         CREATE TABLE edges (

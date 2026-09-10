@@ -4,8 +4,8 @@ import unittest
 class TestStage52WorkerBridge(unittest.TestCase):
 
     def setUp(self):
-        self.worker_path = "/Users/rd/Desktop/LexicalProject/web/js/worker.js"
-        self.bridge_path = "/Users/rd/Desktop/LexicalProject/web/js/db_bridge.js"
+        self.worker_path = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "web", "js", "worker.js"))
+        self.bridge_path = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "web", "js", "db_bridge.js"))
 
     def test_worker_source_integrity(self):
         self.assertTrue(os.path.exists(self.worker_path))

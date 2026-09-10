@@ -1,7 +1,7 @@
 import os
 import sqlite3
 
-root = "/Users/rd/Desktop/LexicalProject"
+root = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 db_path = os.path.join(root, "data/distribution/lexical_graph.db")
 if not os.path.exists(db_path):
     db_path = os.path.join(root, "data/compiled/lexical_graph.db")

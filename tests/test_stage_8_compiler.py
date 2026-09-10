@@ -11,7 +11,7 @@ class TestStage8Compiler(unittest.TestCase):
 
     def setUp(self):
         self.compiler = SQLiteGraphCompiler()
-        self.test_db = "/Users/rd/Desktop/LexicalProject/data/test_lexical_graph.db"
+        self.test_db = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "data", "test_lexical_graph.db"))
         os.makedirs(os.path.dirname(self.test_db), exist_ok=True)
 
     def tearDown(self):
