@@ -22,7 +22,12 @@ jobs:
       - name: Prepare Test Fixtures
         run: python3 scripts/setup_ci_databases.py
       - name: Run Pytest Regression Suite
-        run: python3 -m pytest -v --tb=short
+        run: |
+          python3 -m pytest -ra --tb=short 2>&1 | tee pytest.log || {
+            echo "::error::Pytest failed. Dumping short summary:"
+            grep -E "FAILED|ERROR" pytest.log || cat pytest.log
+            exit 1
+          }
       - name: Execute SQLite WASM Runtime Harness
         run: node scripts/test_wasm_node_runner.js
       - name: Run Day 2 Drift Monitor
