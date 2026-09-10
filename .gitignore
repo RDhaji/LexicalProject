@@ -9,3 +9,4 @@ maintenance_telemetry.json
 data/
 dist/
 backups/
+.DS_Store
