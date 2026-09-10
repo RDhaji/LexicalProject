@@ -20,7 +20,7 @@ conn.execute("PRAGMA optimize;")
 conn.close()
 
 # 4. Vertical-slice regression verification
-test = subprocess.run(["/Users/rd/Desktop/LexicalProject/.venv/bin/pytest", "tests/pipeline/test_errata_queue.py", "-q"], cwd=root, capture_output=True, text=True)
+test = subprocess.run([[sys.executable, "-m", "pytest"], "tests/pipeline/test_errata_queue.py", "-q"], cwd=root, capture_output=True, text=True)
 assert test.returncode == 0, f"Pytest regression suite failed: {test.stderr}"
 
 report = {
