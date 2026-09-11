@@ -1,7 +1,7 @@
 # Project Progress & State Checkpoint
-Last Updated: 2026-09-07
-Current Milestone: M0 (Foundation & Fixture Verification)
-Active Architectural Gate: Gate 0
+Last Updated: 2026-09-11
+Current Milestone: M1 (Data Acquisition & Ingestion)
+Active Architectural Gate: Gate 1
 
 ## Completed Milestones
 - [x] Governance Specifications Lockdown (PRD, ONTOLOGY, ARCHITECTURE, ADRs)
@@ -1214,3 +1214,9 @@ Active Architectural Gate: Gate 0
 - **Drift Monitor**: PASSED (All invariant, checksum, and isolation gates passed; 7 fixtures validated)
 - **Invariants Guarded**: Invariants 1-8 enforced
 - **Active Operational State**: STEADY-STATE PRODUCTION MAINTENANCE
+
+## Checkpoint: Milestone M0 & CI Stabilization Complete (2026-09-11)
+- **CI Status**: `verify` and `container-build` jobs green on remote `main` (`f33aca1`).
+- **Regression**: 88/88 passed (pytest), SQLite WASM runtime verified, Day 2 drift monitor verified, autonomous maintenance verified.
+- **Schema Synchronization**: `storage.user_workspace.init_workspace_schema` aligned across CI fixtures and production runtime; `errata_queue` migration 003 integrated.
+- **Status**: M0 and Gate 0 passed. M1 unblocked.
