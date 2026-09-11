@@ -76,7 +76,7 @@ c_conn.execute("""
         UNION ALL
         SELECT x + 1 FROM cnt WHERE x < 1400000
     )
-    INSERT INTO staging_lexical_entries (source_id, lemma, pos, raw_payload, source)
+    INSERT OR IGNORE INTO staging_lexical_entries (source_id, lemma, pos, raw_payload, source)
     SELECT 'ci_scale_fixture_kaikki_' || x, 'auto', 'NOUN', '{"provenance": "CI_SCALE_TEST_FIXTURE"}', 'KAIKKI'
     FROM cnt;
 """)
@@ -87,7 +87,7 @@ c_conn.execute("""
         UNION ALL
         SELECT x + 1 FROM cnt WHERE x < 100000
     )
-    INSERT INTO staging_lexical_entries (source_id, lemma, pos, raw_payload, source)
+    INSERT OR IGNORE INTO staging_lexical_entries (source_id, lemma, pos, raw_payload, source)
     SELECT 'ci_scale_fixture_oewn_' || x, 'auto', 'NOUN', '{"provenance": "CI_SCALE_TEST_FIXTURE"}', 'OEWN_2025'
     FROM cnt;
 """)
@@ -117,7 +117,7 @@ c_conn.execute("""
 # Seed vertical invariant test fixtures
 for lemma in ["run", "fast", "happy", "go", "good", "bad", "bank"]:
     c_conn.execute(
-        "INSERT INTO staging_lexical_entries (source_id, lemma, pos, raw_payload, source) VALUES (?, ?, 'VERB', '{\"provenance\": \"CI_VERTICAL_FIXTURE\"}', 'KAIKKI')",
+        "INSERT OR IGNORE INTO staging_lexical_entries (source_id, lemma, pos, raw_payload, source) VALUES (?, ?, 'VERB', '{\"provenance\": \"CI_VERTICAL_FIXTURE\"}', 'KAIKKI')",
         (f"ci_vert_{lemma}", lemma)
     )
 

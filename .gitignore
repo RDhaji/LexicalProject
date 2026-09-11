@@ -14,3 +14,15 @@ dist/
 backups/
 .DS_Store
 !data/staging/fixture_resolved_graph.db
+**/.DS_Store
+
+# OS metadata
+**/.DS_Store
+.DS_Store
+
+# Ephemeral benchmarks, test outputs, and semantic exports
+data/distribution/*.json
+data/distribution/*.jsonld
+data/distribution/*.db-shm
+data/distribution/*.db-wal
+scripts/scratch/
