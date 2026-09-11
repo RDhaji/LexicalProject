@@ -17,6 +17,12 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '20'
+      - name: Python Environment Diagnostics
+        run: |
+          which python
+          python --version
+          which pip
+          pip --version
       - name: Install Python Dependencies
         run: |
           python -m pip install --upgrade pip
