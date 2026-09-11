@@ -13,3 +13,4 @@ data/*
 dist/
 backups/
 .DS_Store
+!data/staging/fixture_resolved_graph.db
