@@ -21,10 +21,12 @@ for target in [
         shutil.copyfile(slice_db, target)
 
 # 2. User Workspace Databases
+from storage.user_workspace import init_workspace_schema
 for ws_path in [os.path.join(dist_dir, "user_workspace.db"), os.path.join(data_dir, "user_workspace.db")]:
+    if os.path.exists(ws_path):
+        os.remove(ws_path)
     conn = sqlite3.connect(ws_path)
-    conn.execute("CREATE TABLE IF NOT EXISTS user_notes (id TEXT PRIMARY KEY, note TEXT NOT NULL, created_at INTEGER);")
-    conn.execute("CREATE TABLE IF NOT EXISTS user_bookmarks (id TEXT PRIMARY KEY, item_id TEXT NOT NULL, created_at INTEGER);")
+    init_workspace_schema(conn)
     conn.commit()
     conn.close()
 
