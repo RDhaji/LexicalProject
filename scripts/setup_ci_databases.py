@@ -1,4 +1,8 @@
-import os, sqlite3, shutil
+import os, sys, shutil, sqlite3
+
+root = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+if root not in sys.path:
+    sys.path.insert(0, root)
 
 root = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 data_dir = os.path.join(root, "data")
@@ -19,6 +23,13 @@ for target in [
 ]:
     if os.path.exists(slice_db):
         shutil.copyfile(slice_db, target)
+        mig_003 = os.path.join(root, "migrations", "003_create_errata_queue.sql")
+        if os.path.exists(mig_003):
+            conn = sqlite3.connect(target)
+            with open(mig_003, "r") as f:
+                conn.executescript(f.read())
+            conn.commit()
+            conn.close()
 
 # 2. User Workspace Databases
 from storage.user_workspace import init_workspace_schema
