@@ -18,21 +18,23 @@ jobs:
         with:
           node-version: '20'
       - name: Install Python Dependencies
-        run: pip install -r requirements.txt
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -r requirements.txt
       - name: Prepare Test Fixtures
-        run: python3 scripts/setup_ci_databases.py
+        run: python scripts/setup_ci_databases.py
       - name: Run Pytest Regression Suite
         run: |
-          python3 -m pytest -ra -v --tb=short || {
+          python -m pytest -ra -v --tb=short || {
             echo "::error::Pytest Regression Suite Failed"
             exit 1
           }
       - name: Execute SQLite WASM Runtime Harness
         run: node scripts/test_wasm_node_runner.js
       - name: Run Day 2 Drift Monitor
-        run: python3 scripts/day2_drift_monitor.py
+        run: python scripts/day2_drift_monitor.py
       - name: Run Autonomous Maintenance Engine
-        run: python3 scripts/ops_autonomous_maintenance.py
+        run: python scripts/ops_autonomous_maintenance.py
   container-build:
     runs-on: ubuntu-latest
     steps:

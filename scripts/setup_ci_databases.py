@@ -58,7 +58,21 @@ CREATE TABLE IF NOT EXISTS staging_inflections (
     source TEXT NOT NULL
 );
 
-CREATE TABLE IF NOT EXISTS staging_semantic_relations (
+CREATE TABLE IF NOT EXISTS errata_queue (
+    id TEXT PRIMARY KEY,
+    target_entity_id TEXT NOT NULL,
+    target_lemma TEXT NOT NULL,
+    conflict_type TEXT NOT NULL,
+    source_a_claim TEXT NOT NULL,
+    source_b_claim TEXT NOT NULL,
+    epistemic_class TEXT NOT NULL,
+    metadata TEXT,
+    status TEXT NOT NULL DEFAULT 'PENDING',
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+");
+    c_conn.execute("""
+    CREATE TABLE IF NOT EXISTS staging_semantic_relations (
     synset_id TEXT NOT NULL,
     target_synset_id TEXT,
     relation_type TEXT NOT NULL,
